@@ -19,6 +19,10 @@ let newTodoLi;
 
 deleteTodo();
 
+body.addEventListener("keydown" , function(){
+  input.focus()
+})
+
 let input = $.getElementById("newTodoInput");
 input.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
@@ -36,7 +40,6 @@ input.addEventListener("keypress", function (event) {
         newTodoLi.append(newTodoSpan, newtodoTrashIcon);
         ulElem.append(newTodoLi);
         input.value = null;
-    
         deleteTodo();
       }
   }
