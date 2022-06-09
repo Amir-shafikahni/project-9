@@ -12,35 +12,35 @@ function deleteTodo() {
 
 /////////////////////////////////
 let ulElem = $.querySelector(".list-group");
-let emptyBoxError = $.querySelector(".empty-filled-error")
+let emptyBoxError = $.querySelector(".empty-filled-error");
 let newtodoTrashIcon;
 let newTodoSpan;
 let newTodoLi;
 
 deleteTodo();
 
-body.addEventListener("keydown" , function(){
-  input.focus()
-})
+body.addEventListener("keydown", function () {
+  input.focus();
+});
 
 let input = $.getElementById("newTodoInput");
 input.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
-      if(input.value === ""){
-        event.preventDefault();
-        emptyBoxError.style.display = "block"
-      }else{
-        emptyBoxError.style.display = "none"
-        event.preventDefault();
-        newtodoTrashIcon = document.createElement("i");
-        newtodoTrashIcon.classList.add("fa-solid", "fa-trash-can");
-        newTodoSpan = document.createElement("span");
-        newTodoSpan.innerHTML = input.value;
-        newTodoLi = document.createElement("li");
-        newTodoLi.append(newTodoSpan, newtodoTrashIcon);
-        ulElem.append(newTodoLi);
-        input.value = null;
-        deleteTodo();
-      }
+    if (input.value === "") {
+      event.preventDefault();
+      emptyBoxError.style.display = "block";
+    } else {
+      emptyBoxError.style.display = "none";
+      event.preventDefault();
+      newtodoTrashIcon = document.createElement("i");
+      newtodoTrashIcon.classList.add("fa-solid", "fa-trash-can");
+      newTodoSpan = document.createElement("span");
+      newTodoSpan.innerHTML = input.value;
+      newTodoLi = document.createElement("li");
+      newTodoLi.append(newTodoSpan, newtodoTrashIcon);
+      ulElem.append(newTodoLi);
+      input.value = null;
+      deleteTodo();
+    }
   }
 });
