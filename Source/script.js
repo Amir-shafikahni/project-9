@@ -1,35 +1,25 @@
 let $ = document;
 let body = document.body;
 
-function deleteTodo() {
-  let trashIcons = $.querySelectorAll(".fa-trash-can");
-  trashIcons.forEach(function (Icon) {
-    Icon.addEventListener("click", function () {
-      Icon.parentElement.remove();
-    });
-  });
-}
-
 /////////////////////////////////
-let ulElem = $.querySelector(".list-group");
 let emptyBoxError = $.querySelector(".empty-filled-error");
+let ulElem = $.querySelector(".list-group");
+let input = $.getElementById("newTodoInput");
 let newtodoTrashIcon;
 let newTodoSpan;
 let newTodoLi;
-
-deleteTodo();
 
 body.addEventListener("keydown", function () {
   input.focus();
 });
 
-let input = $.getElementById("newTodoInput");
 input.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
-    if (input.value === "") {
+    if (!input.value) {
       event.preventDefault();
       emptyBoxError.style.display = "block";
     } else {
+      // to add a todo /////////////
       event.preventDefault();
       emptyBoxError.style.display = "none";
 
@@ -45,7 +35,14 @@ input.addEventListener("keypress", function (event) {
       ulElem.append(newTodoLi);
 
       input.value = null;
-      deleteTodo();
+
+      // to delete a todo /////////////
+      let trashIcons = $.querySelectorAll(".fa-trash-can");
+      trashIcons.forEach(function (Icon) {
+        Icon.addEventListener("click", function () {
+          Icon.parentElement.remove();
+        });
+      });
     }
   }
 });
