@@ -30,15 +30,20 @@ input.addEventListener("keypress", function (event) {
       event.preventDefault();
       emptyBoxError.style.display = "block";
     } else {
-      emptyBoxError.style.display = "none";
       event.preventDefault();
-      newtodoTrashIcon = document.createElement("i");
-      newtodoTrashIcon.classList.add("fa-solid", "fa-trash-can");
-      newTodoSpan = document.createElement("span");
+      emptyBoxError.style.display = "none";
+
+      newtodoTrashIcon = $.createElement("i");
+      newtodoTrashIcon.classList = "fa-solid fa-trash-can";
+
+      newTodoSpan = $.createElement("span");
       newTodoSpan.innerHTML = input.value;
-      newTodoLi = document.createElement("li");
+
+      newTodoLi = $.createElement("li");
       newTodoLi.append(newTodoSpan, newtodoTrashIcon);
+
       ulElem.append(newTodoLi);
+
       input.value = null;
       deleteTodo();
     }
